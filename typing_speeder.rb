@@ -85,9 +85,9 @@ seconds_before_pause = 0
 
 # generate couple words to start with 
 5.times do
-  current_words << Word.new(possible_word_list.sample, WIDTH - rand(50..150), rand(0..HEIGHT-120))
+  current_words << generate_new_word(current_words, possible_word_list)
 end
-generate_new_word(current_words, possible_word_list)
+
 
 update do
   clear
@@ -106,7 +106,7 @@ update do
   current_words.each(&:draw)
 
   # each 3 seconds generate new word 
-  # current_words << Word.new(word_list.sample) if Window.frames % 90 == 0 
+  current_words << generate_new_word(current_words, possible_word_list) if Window.frames % 90 == 0 
 
   # each 2/3 of second move each words to the left 
   current_words.each(&:move) if Window.frames % 20 == 0 
