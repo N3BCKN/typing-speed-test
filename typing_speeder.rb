@@ -15,7 +15,7 @@ def draw_bottom_panel
 end 
 
 def draw_pause
-  Text.new('PASUED', x: 35, y: HEIGHT - 35, color: 'white', size: 15)
+  Text.new('PASUED', x: WIDTH / 2, y: HEIGHT / 2, size: 15, color: 'blue')
 end
 
 paused = false
@@ -28,6 +28,7 @@ update do
     draw_pause
     next 
   end 
+
 end 
 
 on :key_down do |event|
