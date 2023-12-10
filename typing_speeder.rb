@@ -11,14 +11,18 @@ set background: 'gray'
 set title: "typing speeder"
 
 
-def draw_bottom_panel(current_word, seconds)
+def draw_bottom_panel(current_word, seconds, lives)
   Rectangle.new(x: 0, y: HEIGHT - 100, width: WIDTH, height: 100, color: 'blue')
   Line.new(x1: 200, x2: 200, y1: HEIGHT - 100, y2: HEIGHT, color: 'white')
   Text.new('Press ESC to pause', x: 35, y: HEIGHT - 35, color: 'white', size: 15)
 
-  Text.new("time: #{seconds}",  x: 20, y: HEIGHT - 90, color: 'white', size: 15)
+  # left top side panel 
+  Text.new("time: #{seconds}", x: 20, y: HEIGHT - 90, color: 'white', size: 15)
+  Text.new("lives: #{lives}",  x: 60, y: HEIGHT - 90, color: 'white', size: 15)
+  # left bottom side panel 
   Text.new('words:', x: 20, y: HEIGHT - 65, color: 'white', size: 15)
 
+  # right side panel 
   Text.new(current_word, x: (WIDTH - 200) / 2 + 20 , y: HEIGHT - 90, color: 'white', size: 50)
 end 
 
@@ -61,7 +65,7 @@ end
 update do
   clear
   
-  draw_bottom_panel(current_word, seconds)
+  draw_bottom_panel(current_word, seconds, lives)
 
   if paused
     draw_pause_view
@@ -72,7 +76,6 @@ update do
 
   seconds = seconds_before_pause + (Time.new - time_start).to_i
   
-
   words.each(&:draw)
 
   # each 3 seconds generate new word 
