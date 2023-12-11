@@ -121,8 +121,8 @@ update do
     end
   end
 
-  # each 1.5 seconds generate new word
-  current_words << generate_new_word(current_words, possible_word_list) if (Window.frames % 45).zero?
+  # each 55 frames generate new word
+  current_words << generate_new_word(current_words, possible_word_list) if (Window.frames % 55).zero?
 end
 
 on :key_down do |event|
