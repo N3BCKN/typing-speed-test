@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'ruby2d'
 possible_word_list = IO.readlines('./words.txt').map(&:strip)
 
@@ -48,7 +46,7 @@ def generate_new_word(current_words, possible_word_list)
     collision = false
 
     occupied_pos.each do |pos|
-      collision = true if (pos[0] - 25..pos[0] + 25).include?(x) && (pos[1] - 20..pos[1] + 20).include?(y)
+      collision = true if (pos[0] - 40..pos[0] + 40).include?(x) && (pos[1] - 25..pos[1] + 25).include?(y)
     end
 
     break unless collision
